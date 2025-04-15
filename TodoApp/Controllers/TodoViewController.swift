@@ -12,10 +12,9 @@ class TodoViewController: UITableViewController {
     // MARK: - UI Elements
     
     // MARK: - Properties
-    var todos = [
-        Todo(title: "Buy an apple, today"),
-        Todo(title: "Do your homework math")
-    ]
+    var todos = [Todo]()
+    var tableViewEditing = false
+    var totalCheck = 0
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -32,7 +31,13 @@ class TodoViewController: UITableViewController {
         let todoItem = todos[indexPath.row].done
         
         cell.textLabel?.text = todos[indexPath.row].title
-        cell.accessoryType = todoItem ? .checkmark : .none
+        if todoItem {
+            cell.accessoryType = .checkmark
+            totalCheck += 1
+        } else {
+            cell.accessoryType = .none
+            totalCheck -= 1
+        }
         return cell
     }
     
@@ -40,6 +45,11 @@ class TodoViewController: UITableViewController {
         todos[indexPath.row].done.toggle()
         tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        todos.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     // MARK: - Functions
@@ -64,6 +74,11 @@ class TodoViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        tableViewEditing.toggle()
+        tableView.setEditing(tableViewEditing, animated: true)
     }
     
 }

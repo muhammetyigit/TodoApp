@@ -31,6 +31,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todo" id="CcY-Uq-RKb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="aJf-nE-omG">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="Qku-yg-heE" id="t27-KH-AME"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZLM-Kn-1IP">
                             <connections>
                                 <action selector="addButtonPressed:" destination="Qku-yg-heE" id="NNY-id-1a2"/>
