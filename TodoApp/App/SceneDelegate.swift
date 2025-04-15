@@ -15,10 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let splashVC = UIViewController()
-        splashVC.view.backgroundColor = .black // Başlangıçta siyah
+        splashVC.view.backgroundColor = .black
         
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold) // SF font gibi görünür
+        titleLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

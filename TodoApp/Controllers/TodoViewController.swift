@@ -12,6 +12,7 @@ class TodoViewController: UITableViewController {
     // MARK: - UI Elements
     
     // MARK: - Properties
+    let manager = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Item.plist")
     var todos = [Todo]()
     var tableViewEditing = false
     var totalCheck = 0
@@ -19,6 +20,8 @@ class TodoViewController: UITableViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        todos = loadTodos()
         
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
@@ -53,6 +56,7 @@ class TodoViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todos.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        saveTodo()
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -61,6 +65,32 @@ class TodoViewController: UITableViewController {
         tableView.reloadData()
     }
     // MARK: - Functions
+    func saveTodo() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(todos)
+            try data.write(to: manager)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func loadTodos() -> [Todo] {
+        let decoder = PropertyListDecoder()
+        
+        if FileManager.default.fileExists(atPath: manager.path) {
+            do {
+                let data = try Data(contentsOf: manager)
+                let todos = try decoder.decode([Todo].self, from: data)
+                return todos
+            } catch {
+                print(error)
+                return []
+            }
+        } else {
+            return []
+        }
+    }
     
     // MARK: - Actions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -71,7 +101,8 @@ class TodoViewController: UITableViewController {
                 var newTodo = Todo()
                 newTodo.title = text
                 self.todos.append(newTodo)
-                    self.tableView.reloadData()
+                self.saveTodo()
+                self.tableView.reloadData()
             }
         }
         
@@ -88,6 +119,5 @@ class TodoViewController: UITableViewController {
         tableViewEditing.toggle()
         tableView.setEditing(tableViewEditing, animated: true)
     }
-    
 }
 
