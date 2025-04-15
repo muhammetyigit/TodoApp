@@ -19,6 +19,9 @@ class TodoViewController: UITableViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - TableView DataSource & Delegate

@@ -50,7 +50,7 @@
         <!--Navigation Controller-->
         <scene sceneID="uNX-RO-pPr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7l-Vw-W6R" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="C7l-Vw-W6R" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="02J-SX-mwV">
                         <rect key="frame" x="0.0" y="96" width="414" height="96"/>
