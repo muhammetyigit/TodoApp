@@ -52,6 +52,11 @@ class TodoViewController: UITableViewController {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedTodo = todos.remove(at: sourceIndexPath.row)
+        todos.insert(movedTodo, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
     // MARK: - Functions
     
     // MARK: - Actions
