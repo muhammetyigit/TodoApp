@@ -36,6 +36,7 @@ class TodoViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todo", for: indexPath)
         let todoItem = todos[indexPath.row].done
         
+        
         cell.textLabel?.text = todos[indexPath.row].title
         if todoItem {
             cell.accessoryType = .checkmark
@@ -44,6 +45,8 @@ class TodoViewController: UITableViewController {
             cell.accessoryType = .none
             totalCheck -= 1
         }
+        
+        saveTodo()
         return cell
     }
     

@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     
                     if index == 0 {
                         UIView.animate(withDuration: Double(text.count) * 0.15, delay: 0, options: [.curveEaseInOut], animations: {
-                            splashVC.view.backgroundColor = .white
+                            splashVC.view.backgroundColor = .systemGray6
                             titleLabel.textColor = .darkGray
                         })
                     }
@@ -60,7 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         
-        let totalDuration = Double("Todo...".count) * 0.15 + 0.5 + 1.0
+        let totalDuration = Double("Todo...✏️".count) * 0.15 + 0.5 + 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + totalDuration) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let nav = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as? UINavigationController else { return }
