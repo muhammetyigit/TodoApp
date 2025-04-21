@@ -10,14 +10,12 @@ local data storage, and table view functionality.
 - Reorder tasks within the list
 
 ### 🛠 App Highlights
-
 - 🚀 Launch Screen: Animated text welcoming users to the app.  
 - 💾 Local Storage: Todo items are stored locally using `FileManager` to persist tasks across app launches.  
 - 📝 Task Management: Users can add, complete, delete, and reorder tasks within the app.  
 - 🎨 UI Enhancements: Custom table view cell styling and smooth user experience for managing tasks.
 
 ### 📱 Technologies Used
-
 - Swift
 - UIKit
 - FileManager (for local data storage)
@@ -30,6 +28,8 @@ To get started with the project, follow these steps:
   ```bash
   git clone https://github.com/muhammetyigit/TodoApp.git
   open TodoApp.xcodeproj
+
+## 📸 Screenshots
 <p align="center">
   <img src="https://github.com/muhammetyigit/TodoApp/blob/main/gif1.gif?raw=true" alt="TodoApp GIF 1" width="500"/>
   <br><br>
